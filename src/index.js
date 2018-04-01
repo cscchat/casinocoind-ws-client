@@ -2,7 +2,7 @@
 
 const EventEmitter = require('events')
 
-class RippledWsClient extends EventEmitter {
+class CasinocoindWsClient extends EventEmitter {
   constructor (Endpoint) {
     super()
 
@@ -319,7 +319,7 @@ class RippledWsClient extends EventEmitter {
                 Connection.Server.LastLedger = ServerInfo.info.validated_ledger.seq
                 SetFee(ServerInfo.info)
               } else {
-                reject(new Error('Invalid rippled server, received no .info.build_version or .info.pubkey_node at server_info request'))
+                reject(new Error('Invalid casinocoind server, received no .info.build_version or .info.pubkey_node at server_info request'))
               }
             }).catch((ServerInfoTimeout) => {
               this.emit('error', {
@@ -424,4 +424,4 @@ class RippledWsClient extends EventEmitter {
   }
 }
 
-module.exports = RippledWsClient
+module.exports = CasinocoindWsClient

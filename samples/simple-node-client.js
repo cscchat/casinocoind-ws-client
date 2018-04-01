@@ -1,6 +1,6 @@
-const RippledWsClient = require('../')
+const CasinocoindWsClient = require('../')
 
-new RippledWsClient('wss://s1.ripple.com').then((Connection) => {
+new CasinocoindWsClient('wss://s1.casinocoin.org').then((Connection) => {
   console.log('<< Connected, now in "then" >>')
 
   Connection.on('error', (error) => {
@@ -45,7 +45,7 @@ new RippledWsClient('wss://s1.ripple.com').then((Connection) => {
 
   Connection.send({
     command: 'subscribe',
-    accounts: [ 'rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv', 'rUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA', 'rUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA' ]
+    accounts: [ 'cD77EhK8TA76smg7N1fYCoLXjovc4qrBdk', 'cUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA', 'cUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA' ]
   }).then((r) => {
     console.log('subscribe Response', r)
   }).catch((e) => {

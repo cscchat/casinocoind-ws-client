@@ -1,87 +1,87 @@
-# rippled-ws-client
+# casinocoind-ws-client
 
-#### A lightweight reconnecting (health checking) websocket client for `rippled`
+#### A lightweight reconnecting (health checking) websocket client for `casinocoind`
 
-This is a websocket client for [rippled](https://ripple.com/build/rippled-apis/).
-Of course there's [ripple-lib](https://github.com/ripple/ripple-lib), but the uncompressed browserified version
-of ripple-lib is ~ 1.4MB. That's quite a lot for mobile users.
+This is a websocket client for [casinocoind](https://casinocoin.org/build/casinocoind-apis/).
+Of course there's [casinocoin-libjs](https://github.com/casinocoin/casinocoin-libjs), but the uncompressed browserified version
+of casinocoin-libjs is ~ 1.4MB. That's quite a lot for mobile users.
 
 > But you can compress, gzip, minify, etc.
 
 That's right, but since we're in the business of crypto, we might want to offer our users the entire uncompressed source, so they can audit it.
 
-> But ripple-lib comes with all the signing goodies.
+> But casinocoin-libjs comes with all the signing goodies.
 
-That's right. But you can build amazing things without signing anything. **If you want to sign offline, or online and await the transaction state, check out the complementary sign repo: [rippled-ws-client-sign](https://www.npmjs.com/package/rippled-ws-client-sign)**.
+That's right. But you can build amazing things without signing anything. **If you want to sign offline, or online and await the transaction state, check out the complementary sign repo: [casinocoind-ws-client-sign](https://www.npmjs.com/package/casinocoind-ws-client-sign)**.
 
-> But ripple-lib has helper methods
+> But casinocoin-libjs has helper methods
 
-Yeah, well... Sometimes the helper methods are not that great. The [Ripple docs](https://ripple.com/build/rippled-apis/) show you all the plain JSON commands. I'd rather send those, so the client is 1:1 compatible with the docs.
+Yeah, well... Sometimes the helper methods are not that great. The [Casinocoin docs](https://casinocoin.org/build/casinocoind-apis/) show you all the plain JSON commands. I'd rather send those, so the client is 1:1 compatible with the docs.
 
-## So. You want to use **rippled-ws-client**?
+## So. You want to use **casinocoind-ws-client**?
 
 Great 🎉! A few notes:
 
-- `rippled-ws-client` is _promise_-based. You'll need a [polyfill](https://cdn.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js) for IE10 and other crappy browsers.
-- You can use `rippled-ws-client` in the browser and in nodejs 😎
-- `rippled-ws-client` will auto-reconnect. But: **not only when the WebSocket disconnects**! The client will send `ping` requests to the rippled-server every few seconds. If the client (four times in a row) doesn't receive a response, the WebSocket will disconnect. Either the client or the server is offline.
-- `rippled-ws-client` will _always_ subscribe on _ledger_-events. This way the `getState()` method can always tell you the most recent ledger.
-- `rippled-ws-client` will emit events.
-- If you want to **test the reconnecting and health checking** (e.g.: connected but no response from the rippled server = auto-reconnect) you can use **[this gist](https://gist.github.com/WietseWind/1016710c39ff512c645bf9affc512abe)** to setup a rippled websocket proxy. You can start / quit / silence any time by restarting the script 🍻 (_The script is configured to stop passing messages from rippled to the client 20 seconds after connecting_).
+- `casinocoind-ws-client` is _promise_-based. You'll need a [polyfill](https://cdn.jsdelivr.net/npm/promise-polyfill/dist/polyfill.min.js) for IE10 and other crappy browsers.
+- You can use `casinocoind-ws-client` in the browser and in nodejs 😎
+- `casinocoind-ws-client` will auto-reconnect. But: **not only when the WebSocket disconnects**! The client will send `ping` requests to the casinocoind-server every few seconds. If the client (four times in a row) doesn't receive a response, the WebSocket will disconnect. Either the client or the server is offline.
+- `casinocoind-ws-client` will _always_ subscribe on _ledger_-events. This way the `getState()` method can always tell you the most recent ledger.
+- `casinocoind-ws-client` will emit events.
+- If you want to **test the reconnecting and health checking** (e.g.: connected but no response from the casinocoind server = auto-reconnect) you can use **[this gist](https://gist.github.com/WietseWind/1016710c39ff512c645bf9affc512abe)** to setup a casinocoind websocket proxy. You can start / quit / silence any time by restarting the script 🍻 (_The script is configured to stop passing messages from casinocoind to the client 20 seconds after connecting_).
 
-### Use **rippled-ws-client** in nodejs
+### Use **casinocoind-ws-client** in nodejs
 
 First install the module;
 ```
-npm install --save rippled-ws-client
+npm install --save casinocoind-ws-client
 ```
 
 Now require:
 
 ```
-const RippledWsClient = require('rippled-ws-client')
+const casinocoindWsClient = require('casinocoind-ws-client')
 ```
 
 ... and use:
 
 ```
-new RippledWsClient('wss://...').then(...).catch(...)
+new casinocoindWsClient('wss://...').then(...).catch(...)
 ```
 
-Samples are available in [the Github repo](https://github.com/WietseWind/rippled-ws-client/tree/master/samples). There are samples on signing and submitting transactions [over here, in the rippled-ws-client-sign repo](https://github.com/WietseWind/rippled-ws-client-sign/blob/master/samples).
+Samples are available in [the Github repo](https://github.com/cscchat/casinocoind-ws-client/tree/master/samples). There are samples on signing and submitting transactions [over here, in the casinocoind-ws-client-sign repo](https://github.com/cscchat/casinocoind-ws-client-sign/blob/master/samples).
 
-### Use **rippled-ws-client** in vanillajs
+### Use **casinocoind-ws-client** in vanillajs
 
 The client is written in ES6 (e.g. [arrow functions](https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/)). The browser won't understand all the code.
 
 Thank goodness you can use [browserify](http://browserify.org/) to convert the code.
 
-1. Checkout the [Github-repo](https://github.com/WietseWind/rippled-ws-client)
+1. Checkout the [Github-repo](https://github.com/cscchat/casinocoind-ws-client)
 2. Enter the directory of your checkout using your commandline (make sure you have [nodejs](https://nodejs.org/en/download/) installed)
 3. Install the dependencies; `npm install`
 4. Install browserify; `npm install -g browserify` (the `-g` will install globally)
 5. Browserify the code:
 
 ```
-browserify -r .:rippled-ws-client -o dist/rippled-ws-client.js
+browserify -r .:casinocoind-ws-client -o dist/casinocoind-ws-client.js
 ```
 
 This will convert/compile the ES6 code to a browser-compatible .js file, stored in the `dist/` folder.
 
 Here's a [sample jsfiddle](https://jsfiddle.net/wx61Loxd/8/) with a precompiled version 😎
 
-### Use **rippled-ws-client** in vue-webpack
+### Use **casinocoind-ws-client** in vue-webpack
 
-Just `npm install --save rippled-ws-client` in your vue-webpack project. You can now start your module with:
+Just `npm install --save casinocoind-ws-client` in your vue-webpack project. You can now start your module with:
 
 ```
-import RippledWsClient from './npm-module/rippled-ws-client.js'
+import casinocoindWsClient from './npm-module/casinocoind-ws-client.js'
 ```
 
 ... and kick off the constructor somewhere;
 
 ```
-new RippledWsClient('wss://...').then(...).catch(...)
+new casinocoindWsClient('wss://...').then(...).catch(...)
 ```
 
 If vue-webpack starts bugging you with an error like this: `Cannot assign to read only property 'exports' of object '#<Object>'`, remove the `transform-runtime` plugin from `.babelrc`.
@@ -94,10 +94,10 @@ The docs will soon move to a dedicated website. For now (since we're in the beta
 
 ## 1. Connecting
 
-That's easy. You construct a new `RippledWsClient` to the WebSocket-server. Please note: use `ws://` for **http** connections, and `wss://` for **https** connection. Actually: don't use http. Use https. Always. Except if you are developing on your own machine.
+That's easy. You construct a new `casinocoindWsClient` to the WebSocket-server. Please note: use `ws://` for **http** connections, and `wss://` for **https** connection. Actually: don't use http. Use https. Always. Except if you are developing on your own machine.
 
 ```
-new RippledWsClient('wss://s1.ripple.com').then(function (connection) {
+new casinocoindWsClient('wss://s1.casinocoin.org').then(function (connection) {
   // We have liftoff!
   // All or other code lives here, using the 'connection' variable
 }).catch(function (error) {
@@ -109,9 +109,9 @@ You should never reach the `catch`. Not even when the connection drops. The clie
 
 ### Reconnecting
 
-When the connection can't be setup, the connection drops, the internet connection times out, the rippled server goes offline, whatever: the client will reconnect at increasing intervals (min: 2 sec., max: 60 sec.). When the connection is online again, all the [subscriptions](https://ripple.com/build/rippled-apis/#subscribe) you sent will be re-sent.
+When the connection can't be setup, the connection drops, the internet connection times out, the casinocoind server goes offline, whatever: the client will reconnect at increasing intervals (min: 2 sec., max: 60 sec.). When the connection is online again, all the [subscriptions](https://casinocoin.org/build/casinocoind-apis/#subscribe) you sent will be re-sent.
 
-If your initial connection is ready, the (promse) `then` will execute. If you had a working connection before, you lost the connection and the client reconnected, an event will be emitted (see _2. Events_).
+If your initial connection is ready, the (promise) `then` will execute. If you had a working connection before, you lost the connection and the client reconnected, an event will be emitted (see _2. Events_).
 
 ### State
 
@@ -129,7 +129,7 @@ console.log(connection.getState())
   server:
    { version: '0.90.0',
      publicKey: 'n9KcmEKTW3ggFgTjNMVkJwJ5R8RhQZeacYLTVgWFcnwheniS7zGA',
-     uri: 'wss://s2.ripple.com' },
+     uri: 'wss://s2.casinocoin.org' },
   ledger: { last: 37064724, validated: '32570-37064724', count: 37032154 },
   fee: { last: 17.578125, avg: 17.578125, secAgo: 3.339 },
   secLastContact: 0.001 }
@@ -151,7 +151,7 @@ Once closed no reconnects will be attempted. The `catch` will only fire if the c
 
 ## 2. Events
 
-The `rippled-ws-client` will emit the events below. You can subscribe to events this way:
+The `casinocoind-ws-client` will emit the events below. You can subscribe to events this way:
 
 ```
 connection.on('ledger', function (ledger) {
@@ -183,14 +183,14 @@ These methods are available on the `connection` (promise `then` callback argumen
 - **`on`**, see _2. Events_
 - **`getState`**, see _State_
 - **`close`**, see _Disconnecting_
-- **`send`**: send a command, and return a promise (with the reply from **rippled**)
+- **`send`**: send a command, and return a promise (with the reply from **casinocoind**)
 
-Any (non-admin) command from the [rippled WebSocket docs](https://ripple.com/build/rippled-apis/) can be sent.
+Any (non-admin) command from the [casinocoind WebSocket docs](https://casinocoin.org/build/casinocoind-apis/) can be sent.
 
 Here's a [sample jsfiddle](https://jsfiddle.net/wx61Loxd/8/).
 Below are two examples:
 
-#### Example 1: getting [server_info](https://ripple.com/build/rippled-apis/#server-info): `server_info`
+#### Example 1: getting [server_info](https://casinocoin.org/build/casinocoind-apis/#server-info): `server_info`
 ```
 connection.send({
   command: 'server_info'
@@ -201,7 +201,7 @@ connection.send({
 })
 ```
 
-#### Example 2: getting [transaction](https://ripple.com/build/rippled-apis/#tx) details: `tx`
+#### Example 2: getting [transaction](https://casinocoin.org/build/casinocoind-apis/#tx) details: `tx`
 
 ```
 connection.send({
@@ -216,7 +216,7 @@ connection.send({
 
 ## 3A. Subscribe (events)
 
-If you want the `rippled` server to send you events, you have to [subscribe](https://ripple.com/build/rippled-apis/#subscribe). After subscribing to events, the `rippled-ws-client` will emit events when they come in (like: `transaction` or `validation`, see _2. Events_)
+If you want the `casinocoind` server to send you events, you have to [subscribe](https://casinocoin.org/build/casinocoind-apis/#subscribe). After subscribing to events, the `casinocoind-ws-client` will emit events when they come in (like: `transaction` or `validation`, see _2. Events_)
 
 You can subscribe to **accounts** or **streams**:
 
@@ -236,7 +236,7 @@ And / or you can subscribe to all transaction events for one or more wallets:
 ```
 connection.send({
   command: 'subscribe',
-  accounts: [ 'rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv', 'rUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA', 'rUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA' ]
+  accounts: [ 'cDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv', 'cUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA', 'cUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA' ]
 }).then(function (response) {
   console.log('Subscribed', response)
 }).catch(function (error) {
@@ -256,5 +256,5 @@ When shit doesn't hit the fan but something goes wrong, an `error` event will be
 - **`ping_error`** if a ping resulted in an (WebSocket) error
 - **`ping_timeout`** if a ping was sent, but timed out
 - **`serverinfo_timeout`** if we requested server_info (after setting up the connection) but we didn't get a response
-- **`message_invalid_json`** if we received a message from the server, but it wasn't JSON (should never happen, except if you are not conneting to a rippled WebSocket)
-- **`message_invalid_response`** if we received a message from the server, but it didn't contain a message id nor was it an event (should never happen, except if you are not conneting to a rippled WebSocket)
+- **`message_invalid_json`** if we received a message from the server, but it wasn't JSON (should never happen, except if you are not conneting to a casinocoind WebSocket)
+- **`message_invalid_response`** if we received a message from the server, but it didn't contain a message id nor was it an event (should never happen, except if you are not conneting to a casinocoind WebSocket)

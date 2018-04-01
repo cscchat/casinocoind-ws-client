@@ -1,7 +1,7 @@
 {
-  "name": "rippled-ws-client",
+  "name": "casinocoind-ws-client",
   "version": "0.0.3",
-  "description": "Reconnecting, health checking rippled WebSocket Client",
+  "description": "Reconnecting, health checking casinocoind WebSocket Client",
   "dependencies": {},
   "main": "src/index.js",
   "files": [
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/WietseWind/rippled-ws-client.git"
+    "url": "git://github.com/cscchat/casinocoind-ws-client.git"
   },
   "bugs": {
-    "url": "https://github.com/WietseWind/rippled-ws-client/issues"
+    "url": "https://github.com/cscchat/casinocoind-ws-client/issues"
   },
-  "homepage": "https://github.com/WietseWind/rippled-ws-client#readme",
+  "homepage": "https://github.com/cscchat/casinocoind-ws-client#readme",
   "license": "MIT",
   "readmeFilename": "README.md"
 }
