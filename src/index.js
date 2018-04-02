@@ -102,7 +102,7 @@ class CasinocoindWsClient extends EventEmitter {
     }
     let SetFee = (ServerInfo) => {
       let feeCushion = 1.2
-      let NewFee = ServerInfo.load_factor * ServerInfo.validated_ledger.base_fee_xrp * 1000 * 1000 * feeCushion
+      let NewFee = ServerInfo.load_factor * ServerInfo.validated_ledger.base_fee_csc * 1000 * 1000 * feeCushion
       if (NewFee !== Connection.Server.Fee.Last) {
         // Fee changed
       }
@@ -284,7 +284,7 @@ class CasinocoindWsClient extends EventEmitter {
         }, Connection.Timeout.ConnectSeconds * 1000)
         try {
           if (typeof window === 'undefined' && typeof global !== 'undefined' && typeof global['WebSocket'] === 'undefined') {
-            // We're running nodejs, no WebSocket client availabe.
+            // We're running nodejs, no WebSocket client available.
             const WebSocket = require('websocket').w3cwebsocket
             Connection.WebSocket = new WebSocket(Endpoint)
           } else {
