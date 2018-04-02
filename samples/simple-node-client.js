@@ -1,6 +1,6 @@
 const CasinocoindWsClient = require('../')
 
-new CasinocoindWsClient('wss://s1.casinocoin.org').then((Connection) => {
+new CasinocoindWsClient('wss://ws01.casinocoin.org').then((Connection) => {
   console.log('<< Connected, now in "then" >>')
 
   Connection.on('error', (error) => {
@@ -45,7 +45,7 @@ new CasinocoindWsClient('wss://s1.casinocoin.org').then((Connection) => {
 
   Connection.send({
     command: 'subscribe',
-    accounts: [ 'cD77EhK8TA76smg7N1fYCoLXjovc4qrBdk', 'cUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA', 'cUZwBRmxtK9PwoJqAsgJg5P5was3Bd7wjA' ]
+    accounts: [ 'cDarPNJEpCnpBZSfmcquydockkePkjPGA2', 'caSnj7PCzBm5ZxC8Kbs1pBfouTLZnfjVja', 'cJ5baKjE8WknnaFCEu1tt2rQb2rAAbZ1Wo' ]
   }).then((r) => {
     console.log('subscribe Response', r)
   }).catch((e) => {
