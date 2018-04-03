@@ -1,6 +1,6 @@
 {
   "name": "casinocoind-ws-client",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Reconnecting, health checking casinocoind WebSocket Client",
   "dependencies": {},
   "main": "src/index.js",

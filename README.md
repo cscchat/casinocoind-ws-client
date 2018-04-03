@@ -68,7 +68,7 @@ browserify -r .:casinocoind-ws-client -o dist/casinocoind-ws-client.js
 
 This will convert/compile the ES6 code to a browser-compatible .js file, stored in the `dist/` folder.
 
-Here's a [sample jsfiddle](https://jsfiddle.net/cscchat/52muey62/2/) with a precompiled version 😎
+Here's a [sample jsfiddle](https://jsfiddle.net/cscchat/52muey62/33/) with a precompiled version 😎
 
 ### Use **casinocoind-ws-client** in vue-webpack
 
@@ -97,7 +97,7 @@ The docs will soon move to a dedicated website. For now (since we're in the beta
 That's easy. You construct a new `casinocoindWsClient` to the WebSocket-server. Please note: use `ws://` for **http** connections, and `wss://` for **https** connection. Actually: don't use http. Use https. Always. Except if you are developing on your own machine.
 
 ```
-new casinocoindWsClient('wss://ws01.casinocoin.org').then(function (connection) {
+new casinocoindWsClient('wss://ws01.casinocoin.org:4443').then(function (connection) {
   // We have liftoff!
   // All or other code lives here, using the 'connection' variable
 }).catch(function (error) {
@@ -187,7 +187,7 @@ These methods are available on the `connection` (promise `then` callback argumen
 
 Any (non-admin) command from the [casinocoind WebSocket docs](https://casinocoin.org/build/casinocoin-api-tool.html) can be sent.
 
-Here's a [sample jsfiddle](https://jsfiddle.net/cscchat/52muey62/2/).
+Here's a [sample jsfiddle](https://jsfiddle.net/cscchat/52muey62/33/).
 Below are two examples:
 
 #### Example 1: getting [server_info](https://casinocoin.org/build/casinocoin-api-tool.html/#server-info): `server_info`
